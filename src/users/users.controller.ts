@@ -27,7 +27,12 @@ export class UsersController {
       },
     };
 
-    return await this.tmdb.getMovieEndpoint().getDetails(args);
+    const movie = await this.tmdb.getMovieEndpoint().getDetails(args);
+
+    return {
+      success: true,
+      data: movie.data,
+    };
   }
 
   @Post()
