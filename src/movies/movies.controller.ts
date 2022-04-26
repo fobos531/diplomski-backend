@@ -2,25 +2,26 @@ import { Controller, Get, Param } from '@nestjs/common';
 import { TheMovieDbService } from '@harshppatel/nestjs-themoviedb-api';
 import MovieDB from 'node-themoviedb';
 
-// Ovo mozda mores zamijeniti umjesto movies da bude titles
 @Controller('movies')
 export class MoviesController {
   constructor(private readonly tmdb: TheMovieDbService) {}
 
-  @Get('/trending/:type')
-  async getMovies(@Param() params): Promise<any> {
-    const args: MovieDB.Arguments.Trending.GetTrending = {
+  @Get('/:id')
+  async getMovieDetails(@Param('id') id: number): Promise<any> {
+    const args: MovieDB.Arguments.Movie.GetDetails = {
       pathParameters: {
-        media_type: params.type,
-        time_window: 'week',
+        movie_id: id,
+      },
+      query: {
+        append_to_response: 'ideos,images',
       },
     };
 
-    const movies = await this.tmdb.getTrendingEndpoint().getTrending(args);
+    const movieDetails = await this.tmdb.getMovieEndpoint().getDetails(args);
 
     return {
       success: true,
-      data: movies.data,
+      data: movieDetails.data,
     };
   }
 }

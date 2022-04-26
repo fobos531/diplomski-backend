@@ -5,14 +5,18 @@ import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
+import { TitlesModule } from './titles/titles.module';
 import { MoviesModule } from './movies/movies.module';
+import { TvModule } from './tv/tv.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
     MongooseModule.forRoot(process.env.DATABASE_URL),
     UsersModule,
+    TitlesModule,
     MoviesModule,
+    TvModule,
   ],
   controllers: [AppController],
   providers: [AppService],
