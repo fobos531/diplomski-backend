@@ -8,6 +8,7 @@ import { UsersModule } from './users/users.module';
 import { TitlesModule } from './titles/titles.module';
 import { MoviesModule } from './movies/movies.module';
 import { TvModule } from './tv/tv.module';
+import { WsModule } from './ws/ws.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { TvModule } from './tv/tv.module';
     TitlesModule,
     MoviesModule,
     TvModule,
+    WsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
