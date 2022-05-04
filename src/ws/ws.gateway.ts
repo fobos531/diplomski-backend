@@ -1,11 +1,11 @@
 import {
+  ConnectedSocket,
   MessageBody,
   SubscribeMessage,
   WebSocketGateway,
-  WsResponse,
+  WebSocketServer,
 } from '@nestjs/websockets';
-import { from, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Server, Socket } from 'socket.io';
 
 @WebSocketGateway({
   cors: {
@@ -13,16 +13,14 @@ import { map } from 'rxjs/operators';
   },
 })
 export class EventsGateway {
-  @SubscribeMessage('events')
-  findAll(@MessageBody() data: any): Observable<WsResponse<number>> {
-    console.log('DATAAAA', data);
-    return from([1, 2, 3]).pipe(
-      map((item) => ({ event: 'events', data: item })),
-    );
-  }
+  @WebSocketServer() server: Server;
 
   @SubscribeMessage('identity')
-  async identity(@MessageBody() data: number): Promise<number> {
-    return data;
+  async identity(
+    @MessageBody() data: any,
+    @ConnectedSocket() socket: Socket,
+  ): Promise<any> {
+    socket.broadcast.emit('HEY', data); // Emits to everyone except the sender
+    return this.server.sockets.emit('BOSS', data); // Emits to absolutely everyone
   }
 }
