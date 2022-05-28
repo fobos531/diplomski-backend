@@ -9,6 +9,7 @@ import { TitlesModule } from './titles/titles.module';
 import { MoviesModule } from './movies/movies.module';
 import { TvModule } from './tv/tv.module';
 import { WsModule } from './ws/ws.module';
+import { SearchModule } from './search/search.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { WsModule } from './ws/ws.module';
     MoviesModule,
     TvModule,
     WsModule,
+    SearchModule,
   ],
   controllers: [AppController],
   providers: [AppService],
