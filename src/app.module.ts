@@ -10,6 +10,7 @@ import { MoviesModule } from './movies/movies.module';
 import { TvModule } from './tv/tv.module';
 import { WsModule } from './ws/ws.module';
 import { SearchModule } from './search/search.module';
+import { LiveKitModule } from './livekit/livekit.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { SearchModule } from './search/search.module';
     TvModule,
     WsModule,
     SearchModule,
+    LiveKitModule,
   ],
   controllers: [AppController],
   providers: [AppService],
