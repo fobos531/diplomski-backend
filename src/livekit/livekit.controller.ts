@@ -1,9 +1,9 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { RoomServiceClient, AccessToken } from 'livekit-server-sdk';
 
-const livekitHost = 'http://localhost:7880';
-const apikey = 'APIM9byRnR9KtfQ';
-const secretKey = 'ceFifJxe6f0m3noNHJtYHase7calFuslZtZM8pzs89bH';
+const livekitHost = 'https://livekit.cinesimul.xyz:7880';
+const apikey = 'API2NKZfbJBg63w';
+const secretKey = 'YY9q5I95HryiXlKPi2Hhi9m6bENkaPON8CQIEtweXAC';
 
 @Controller('live')
 export class LiveKitController {
