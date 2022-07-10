@@ -1,5 +1,6 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { RoomServiceClient, AccessToken } from 'livekit-server-sdk';
+import { randFullName } from '@ngneat/falso';
 
 const livekitHost = 'https://livekit.cinesimul.xyz:7880';
 const apikey = 'API2NKZfbJBg63w';
@@ -12,13 +13,16 @@ export class LiveKitController {
     const svc = new RoomServiceClient(livekitHost, 'api-key', 'secret-key');
 
     const at = new AccessToken(apikey, secretKey, {
-      identity: 'BOSS3',
+      identity: randFullName(),
     });
     at.addGrant({ roomJoin: true, room: 'stark-tower' });
 
     const token = at.toJwt();
     console.log('access token', token);
 
-    return 'BOSS';
+    return {
+      success: true,
+      token,
+    };
   }
 }
