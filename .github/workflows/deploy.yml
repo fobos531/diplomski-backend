@@ -20,5 +20,5 @@ jobs:
         uses: dokku/github-action@master
         with:
           branch: 'develop'
-          git_remote_url: 'ssh://dokku@${{secrets.HOST}}:22/kaufman-bot'
+          git_remote_url: 'ssh://dokku@${{secrets.HOST}}:22/cinesimul-backend'
           ssh_private_key: ${{secrets.SSH_PRIVATE_KEY}}
