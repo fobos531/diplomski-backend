@@ -6,7 +6,6 @@ import { AppService } from './app.service';
 import { TitlesModule } from './titles/titles.module';
 import { MoviesModule } from './movies/movies.module';
 import { TvModule } from './tv/tv.module';
-import { WsModule } from './ws/ws.module';
 import { SearchModule } from './search/search.module';
 import { LiveKitModule } from './livekit/livekit.module';
 
@@ -16,7 +15,6 @@ import { LiveKitModule } from './livekit/livekit.module';
     TitlesModule,
     MoviesModule,
     TvModule,
-    WsModule,
     SearchModule,
     LiveKitModule,
   ],

@@ -1,9 +1,8 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { RoomServiceClient, AccessToken } from 'livekit-server-sdk';
+import { Body, Controller, Post } from '@nestjs/common';
+import { AccessToken } from 'livekit-server-sdk';
 import { randFullName, randBook } from '@ngneat/falso';
 import { TokenDto } from './dto/token.dto';
 
-const livekitHost = 'https://livekit.cinesimul.xyz:7880';
 const apikey = 'API2NKZfbJBg63w';
 const secretKey = 'YY9q5I95HryiXlKPi2Hhi9m6bENkaPON8CQIEtweXAC';
 
@@ -11,8 +10,6 @@ const secretKey = 'YY9q5I95HryiXlKPi2Hhi9m6bENkaPON8CQIEtweXAC';
 export class LiveKitController {
   @Post('/join')
   async join(@Body() tokenDto: TokenDto): Promise<any> {
-    const svc = new RoomServiceClient(livekitHost, 'api-key', 'secret-key');
-
     const at = new AccessToken(apikey, secretKey, {
       identity: randFullName(),
     });
