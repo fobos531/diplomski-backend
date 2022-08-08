@@ -20,7 +20,8 @@ jobs:
         run: |
           # this is to fix GIT not liking owner of the checkout dir
           # https://github.com/actions/runner/issues/2033
-          chown -R $(id -u):$(id -g) $PWD
+          # https://exerror.com/fatal-detected-dubious-ownership-in-repository/
+          git config --global --add safe.directory '*'
 
       - name: Push to dokku
         uses: dokku/github-action@master
